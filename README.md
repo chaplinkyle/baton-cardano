@@ -36,17 +36,23 @@ transaction.
 
 ### Release policies
 
-- **Fixed destination.** The receiving Cardano address is permanently committed
-  when the plan is created. After the deadline, anyone may submit the release
-  transaction, but the contract requires the complete protected value to go to
-  that exact address. The submitter cannot redirect or partially retain it.
-- **Recovery token.** No receiving address is selected in advance. Baton mints
-  exactly one unique `BATON_RECOVERY` token when the plan is created. After the
-  deadline, the wallet that spends that token chooses the receiving address,
-  and the contract requires the token and complete protected value to arrive
-  together. Possession of this token is the recovery authority, so it must be
-  protected like a private key; losing it can make recovery impossible, while
-  theft transfers the recovery right.
+Every plan uses exactly one of the following release methods, selected when the
+plan is created. They are alternatives: one plan cannot use both methods or
+switch between them later.
+
+- **Option 1 — Fixed destination plan.** Choose the receiving Cardano address
+  when creating the plan. That address is permanently committed to the
+  contract. After the deadline, anyone may submit the release transaction, but
+  the complete protected value can only go to the address chosen at creation.
+  The submitter cannot change the destination or retain part of the value.
+- **Option 2 — Recovery token plan.** Do not choose a receiving address when
+  creating the plan. Instead, Baton mints exactly one unique
+  `BATON_RECOVERY` token. After the deadline, the wallet that spends that token
+  chooses the receiving address while claiming the protected value. The
+  contract requires the token and complete protected value to arrive together.
+  Possession of the token is the recovery authority, so it must be protected
+  like a private key: losing it can make recovery impossible, while theft
+  transfers the recovery right.
 
 ### Actions before the deadline
 
