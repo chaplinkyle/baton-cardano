@@ -15,18 +15,50 @@ creation.
 
 ## Protocol
 
+Baton does not attempt to determine whether an owner is alive. It enforces a
+simple, observable rule: a valid check-in authorized by the plan's designated
+liveness key must be recorded on Cardano before the release deadline. If no
+check-in is confirmed in time, the protected assets become eligible for release
+under the policy chosen when the plan was created.
+
+### When a plan becomes releasable
+
 ```text
-release time = last confirmed check-in + check-in period × allowed misses
+release time = last confirmed check-in + (check-in period × allowed misses)
 ```
 
-- **Fixed destination:** the complete protected value can only be released to
-  the address committed at creation.
-- **Recovery token:** no beneficiary is named in advance. The holder of the
-  unique `BATON_RECOVERY` token selects the receiving address after expiry.
-- **Owner close:** before expiry, the owner may close the plan and recover the
-  complete protected value.
-- **Check-in:** the separate liveness key advances the state while preserving
-  the exact value, policy, and owner configuration.
+For example, a 30-day check-in period with three allowed misses becomes
+releasable 90 days after the last confirmed check-in. A successful check-in
+starts a new window from its confirmed on-chain time. The contract does not
+need a transaction for each missed interval, and it does not release anything
+automatically; after the deadline, an eligible party must submit the release
+transaction.
+
+### Release policies
+
+- **Fixed destination.** The receiving Cardano address is permanently committed
+  when the plan is created. After the deadline, anyone may submit the release
+  transaction, but the contract requires the complete protected value to go to
+  that exact address. The submitter cannot redirect or partially retain it.
+- **Recovery token.** No receiving address is selected in advance. Baton mints
+  exactly one unique `BATON_RECOVERY` token when the plan is created. After the
+  deadline, the wallet that spends that token chooses the receiving address,
+  and the contract requires the token and complete protected value to arrive
+  together. Possession of this token is the recovery authority, so it must be
+  protected like a private key; losing it can make recovery impossible, while
+  theft transfers the recovery right.
+
+### Actions before the deadline
+
+- **Check in.** The designated liveness key submits an on-chain state update
+  before the release deadline. Only the confirmed check-in time and sequence
+  number may change. The protected ADA, native tokens, NFTs, release policy,
+  owner, timing rules, and optional payload commitment must remain unchanged.
+  The wallet pays the Cardano network fee from outside the protected value.
+- **Owner close.** The owner may close the plan before the release deadline and
+  recover the complete protected value. At or after the deadline, this
+  privileged owner path is no longer available; the selected release policy
+  controls recovery instead.
 
 The validator charges no protocol fee and has no administrator, upgrade,
 pause, or withdrawal key. Interfaces may independently charge for services;
