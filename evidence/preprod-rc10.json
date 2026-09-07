@@ -1,0 +1,311 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Automated Baton public-Preprod lifecycle test; contains no private keys.",
+  "network": "Preprod",
+  "startedAt": "2026-09-07T13:50:53.770Z",
+  "completedAt": "2026-09-07T14:02:02.807Z",
+  "result": "pass",
+  "walletAddresses": {
+    "owner": "addr_test1vz87vn6l887n5ddapnpzqwgxhzp07jy0zx9zhwtrwcxvydc8c4g43",
+    "liveness": "addr_test1vrng89l206stgr9kfyyk9vg4hgw072plxc94tlgwunla49c5ytat0",
+    "beneficiary": "addr_test1vqkjkxhwhry4kduldkt7ytg8ylleccj2cl04mrsgff2s6kqwp65cj",
+    "executor": "addr_test1vr37mc0ga3pcfjncw2f6cr0apksx76a9zl4qpryzrg2xtrgstm79p",
+    "recovery_holder": "addr_test1vqmwkkuyh2eavwjug7j5x035tmsggghrxtpc5dfckhr6fqqs3le47",
+    "non_holder": "addr_test1vz9xgsuqr9jvs2ttda29sttncg9rge4jtw546204hky8src0nnq3u"
+  },
+  "auxiliaryTransactions": [
+    {
+      "action": "fund automated action wallets",
+      "txId": "2ce9b4a664790a92374e60921ba3502522422318fb3c4c6d3e9cd3b2738e8e85",
+      "confirmedAt": "2026-09-07T13:53:37.488Z"
+    },
+    {
+      "action": "transfer one-shot recovery token",
+      "txId": "628416245cab53bb58fa23ddb4f31130a1afba802a6d44bcb9f8bbf92c49bcd5",
+      "confirmedAt": "2026-09-07T13:57:48.070Z"
+    }
+  ],
+  "runs": [
+    {
+      "path": "fixed-release",
+      "vaultId": "2c26efe79fb8730c973086843582f5b7848d41dec9e7cda3243077784241544f4e",
+      "ownerAddress": "addr_test1vz87vn6l887n5ddapnpzqwgxhzp07jy0zx9zhwtrwcxvydc8c4g43",
+      "livenessAddress": "addr_test1vrng89l206stgr9kfyyk9vg4hgw072plxc94tlgwunla49c5ytat0",
+      "periodMs": 10000,
+      "missesToRelease": 1,
+      "lastCheckInAt": "2026-09-07T13:57:37.000Z",
+      "releaseAt": "2026-09-07T13:57:47.000Z",
+      "transactions": [
+        {
+          "action": "create",
+          "txId": "2b1dfd27b89242b29aef603d232633f9d594ad9e6f5d15970cf3251bb08efc98",
+          "submitterAddress": "addr_test1vz87vn6l887n5ddapnpzqwgxhzp07jy0zx9zhwtrwcxvydc8c4g43",
+          "confirmedAt": "2026-09-07T13:53:55.592Z",
+          "networkFeeLovelace": "414653",
+          "siteFeeLovelace": "5000000",
+          "transactionBytes": 5309,
+          "sequence": 0,
+          "stateLastCheckInAt": "2026-09-07T13:57:37.000Z",
+          "stateReleaseAt": "2026-09-07T13:57:47.000Z",
+          "result": "pass",
+          "notes": "Created and confirmed through the official Baton 5 ADA interface-fee path."
+        },
+        {
+          "action": "release",
+          "txId": "e04b174bbd20b2198d0add07068b614ea2f2616f7f777fd0b0e22110e167b4a8",
+          "submitterAddress": "addr_test1vr37mc0ga3pcfjncw2f6cr0apksx76a9zl4qpryzrg2xtrgstm79p",
+          "confirmedAt": "2026-09-07T14:01:41.658Z",
+          "networkFeeLovelace": "423621",
+          "siteFeeLovelace": "0",
+          "transactionBytes": 5044,
+          "sequence": 0,
+          "stateLastCheckInAt": "2026-09-07T13:57:37.000Z",
+          "stateReleaseAt": "2026-09-07T13:57:47.000Z",
+          "result": "pass",
+          "notes": "release built, signed by an isolated software wallet, submitted, and confirmed on Preprod."
+        }
+      ],
+      "manifest": {
+        "version": 3,
+        "network": "Preprod",
+        "creationTx": "2b1dfd27b89242b29aef603d232633f9d594ad9e6f5d15970cf3251bb08efc98",
+        "seed": {
+          "txHash": "9b89c36f660e54b25f65e578126b79eec0780c458962f38baffba37f1879be72",
+          "outputIndex": 0
+        },
+        "receiptName": "BATON",
+        "terminalReceiptName": "BATON_COMPLETE",
+        "recoveryReceiptName": "BATON_RECOVERY",
+        "policyId": "2c26efe79fb8730c973086843582f5b7848d41dec9e7cda324307778",
+        "receiptUnit": "2c26efe79fb8730c973086843582f5b7848d41dec9e7cda3243077784241544f4e",
+        "terminalReceiptUnit": "2c26efe79fb8730c973086843582f5b7848d41dec9e7cda3243077784241544f4e5f434f4d504c455445",
+        "validatorAddress": "addr_test1wqkzdml8n7u8xryhxzrggdvz7kmcfr2pmmy70ndrysc8w7qqrhfrc",
+        "ownerKeyHash": "8fe64f5f39fd3a35bd0cc2203906b882ff488f118a2bb963760cc237",
+        "livenessKeyHash": "e68397ea7ea0b40cb6490962b115ba1cff283f360b55fd0ee4ffda97",
+        "checkInPeriodMs": 10000,
+        "missesToRelease": 1,
+        "lastCheckInAtMs": 1788789457000,
+        "releaseAtMs": 1788789467000,
+        "releaseMode": "fixed",
+        "destination": "addr_test1vqkjkxhwhry4kduldkt7ytg8ylleccj2cl04mrsgff2s6kqwp65cj"
+      },
+      "destinationAddress": "addr_test1vqkjkxhwhry4kduldkt7ytg8ylleccj2cl04mrsgff2s6kqwp65cj",
+      "executorAddress": "addr_test1vr37mc0ga3pcfjncw2f6cr0apksx76a9zl4qpryzrg2xtrgstm79p"
+    },
+    {
+      "path": "bearer-release",
+      "vaultId": "7225f05fcd16bd1eec160939a752a803cdad587ded846f974a72476f4241544f4e",
+      "ownerAddress": "addr_test1vz87vn6l887n5ddapnpzqwgxhzp07jy0zx9zhwtrwcxvydc8c4g43",
+      "livenessAddress": "addr_test1vrng89l206stgr9kfyyk9vg4hgw072plxc94tlgwunla49c5ytat0",
+      "periodMs": 10000,
+      "missesToRelease": 1,
+      "lastCheckInAt": "2026-09-07T14:00:09.000Z",
+      "releaseAt": "2026-09-07T14:00:19.000Z",
+      "transactions": [
+        {
+          "action": "create",
+          "txId": "51aa2d7f0a3975e4f64f68965963d419e3fc5f170ea78bd8df7c9ff7d7837af4",
+          "submitterAddress": "addr_test1vz87vn6l887n5ddapnpzqwgxhzp07jy0zx9zhwtrwcxvydc8c4g43",
+          "confirmedAt": "2026-09-07T13:57:28.660Z",
+          "networkFeeLovelace": "437761",
+          "siteFeeLovelace": "5000000",
+          "transactionBytes": 5512,
+          "sequence": 0,
+          "stateLastCheckInAt": "2026-09-07T14:00:09.000Z",
+          "stateReleaseAt": "2026-09-07T14:00:19.000Z",
+          "result": "pass",
+          "notes": "Created and confirmed through the official Baton 5 ADA interface-fee path."
+        },
+        {
+          "action": "rejected-release",
+          "txId": null,
+          "submitterAddress": "addr_test1vz9xgsuqr9jvs2ttda29sttncg9rge4jtw546204hky8src0nnq3u",
+          "confirmedAt": null,
+          "networkFeeLovelace": null,
+          "siteFeeLovelace": "0",
+          "transactionBytes": 0,
+          "sequence": 0,
+          "stateLastCheckInAt": "2026-09-07T14:00:09.000Z",
+          "stateReleaseAt": "2026-09-07T14:00:19.000Z",
+          "result": "pass",
+          "notes": "Off-chain construction rejected a wallet without the one-shot recovery token."
+        },
+        {
+          "action": "release",
+          "txId": "0f82747d0a66256ede13c35263d78a0c406ea129b9b41d1890d16a653e31ab89",
+          "submitterAddress": "addr_test1vqmwkkuyh2eavwjug7j5x035tmsggghrxtpc5dfckhr6fqqs3le47",
+          "confirmedAt": "2026-09-07T14:02:01.835Z",
+          "networkFeeLovelace": "438420",
+          "siteFeeLovelace": "0",
+          "transactionBytes": 5096,
+          "sequence": 0,
+          "stateLastCheckInAt": "2026-09-07T14:00:09.000Z",
+          "stateReleaseAt": "2026-09-07T14:00:19.000Z",
+          "result": "pass",
+          "notes": "release built, signed by an isolated software wallet, submitted, and confirmed on Preprod."
+        }
+      ],
+      "manifest": {
+        "version": 3,
+        "network": "Preprod",
+        "creationTx": "51aa2d7f0a3975e4f64f68965963d419e3fc5f170ea78bd8df7c9ff7d7837af4",
+        "seed": {
+          "txHash": "479ac2ce65e0c121cbb9f8c4c3bcd10e84ff0ff14e1ef49d26194158dfb31e28",
+          "outputIndex": 1
+        },
+        "receiptName": "BATON",
+        "terminalReceiptName": "BATON_COMPLETE",
+        "recoveryReceiptName": "BATON_RECOVERY",
+        "policyId": "7225f05fcd16bd1eec160939a752a803cdad587ded846f974a72476f",
+        "receiptUnit": "7225f05fcd16bd1eec160939a752a803cdad587ded846f974a72476f4241544f4e",
+        "terminalReceiptUnit": "7225f05fcd16bd1eec160939a752a803cdad587ded846f974a72476f4241544f4e5f434f4d504c455445",
+        "validatorAddress": "addr_test1wpeztuzle5tt68hvzcynnf6j4qpumt2c0hkcgmuhffeywmcs6h3s7",
+        "ownerKeyHash": "8fe64f5f39fd3a35bd0cc2203906b882ff488f118a2bb963760cc237",
+        "livenessKeyHash": "e68397ea7ea0b40cb6490962b115ba1cff283f360b55fd0ee4ffda97",
+        "checkInPeriodMs": 10000,
+        "missesToRelease": 1,
+        "lastCheckInAtMs": 1788789609000,
+        "releaseAtMs": 1788789619000,
+        "releaseMode": "bearer",
+        "recoveryUnit": "7225f05fcd16bd1eec160939a752a803cdad587ded846f974a72476f4241544f4e5f5245434f56455259"
+      },
+      "recoveryUnit": "7225f05fcd16bd1eec160939a752a803cdad587ded846f974a72476f4241544f4e5f5245434f56455259",
+      "recoveryTokenHolderAddress": "addr_test1vqmwkkuyh2eavwjug7j5x035tmsggghrxtpc5dfckhr6fqqs3le47",
+      "nonHolderAddress": "addr_test1vz9xgsuqr9jvs2ttda29sttncg9rge4jtw546204hky8src0nnq3u"
+    },
+    {
+      "path": "fixed-close",
+      "vaultId": "7f3e9c7255c502989195452f721a8c7491da9d8a42aaf4af7a773cb34241544f4e",
+      "ownerAddress": "addr_test1vz87vn6l887n5ddapnpzqwgxhzp07jy0zx9zhwtrwcxvydc8c4g43",
+      "livenessAddress": "addr_test1vrng89l206stgr9kfyyk9vg4hgw072plxc94tlgwunla49c5ytat0",
+      "periodMs": 86400000,
+      "missesToRelease": 2,
+      "lastCheckInAt": "2026-09-07T14:14:34.000Z",
+      "releaseAt": "2026-09-09T14:14:34.000Z",
+      "transactions": [
+        {
+          "action": "create",
+          "txId": "5ac5cee8ef48845c86fb63b9f349f8ef18adef4175b544a4561e2d4b796d5b80",
+          "submitterAddress": "addr_test1vz87vn6l887n5ddapnpzqwgxhzp07jy0zx9zhwtrwcxvydc8c4g43",
+          "confirmedAt": "2026-09-07T13:58:07.477Z",
+          "networkFeeLovelace": "419421",
+          "siteFeeLovelace": "5000000",
+          "transactionBytes": 5420,
+          "sequence": 0,
+          "stateLastCheckInAt": "2026-09-07T14:11:48.000Z",
+          "stateReleaseAt": "2026-09-09T14:11:48.000Z",
+          "result": "pass",
+          "notes": "Created and confirmed through the official Baton 5 ADA interface-fee path."
+        },
+        {
+          "action": "pulse",
+          "txId": "57d22a3bc4c3d371290065edd5f9dc056451d7ed982f099355839a3f14cccc40",
+          "submitterAddress": "addr_test1vrng89l206stgr9kfyyk9vg4hgw072plxc94tlgwunla49c5ytat0",
+          "confirmedAt": "2026-09-07T13:58:47.222Z",
+          "networkFeeLovelace": "406630",
+          "siteFeeLovelace": "0",
+          "transactionBytes": 5104,
+          "sequence": 1,
+          "stateLastCheckInAt": "2026-09-07T14:12:08.000Z",
+          "stateReleaseAt": "2026-09-09T14:12:08.000Z",
+          "result": "pass",
+          "notes": "pulse built, signed by an isolated software wallet, submitted, and confirmed on Preprod."
+        },
+        {
+          "action": "pulse",
+          "txId": "36817b398579a58baf11d5ad5737df469e397dd037870101f8579e3fb22e7759",
+          "submitterAddress": "addr_test1vrng89l206stgr9kfyyk9vg4hgw072plxc94tlgwunla49c5ytat0",
+          "confirmedAt": "2026-09-07T13:58:55.034Z",
+          "networkFeeLovelace": "406630",
+          "siteFeeLovelace": "0",
+          "transactionBytes": 5104,
+          "sequence": 2,
+          "stateLastCheckInAt": "2026-09-07T14:12:48.000Z",
+          "stateReleaseAt": "2026-09-09T14:12:48.000Z",
+          "result": "pass",
+          "notes": "pulse built, signed by an isolated software wallet, submitted, and confirmed on Preprod."
+        },
+        {
+          "action": "pulse",
+          "txId": "d4438c166f1bdd69fbcc9e31c5b337afa4d821e6df0abc2b17ae331749951047",
+          "submitterAddress": "addr_test1vrng89l206stgr9kfyyk9vg4hgw072plxc94tlgwunla49c5ytat0",
+          "confirmedAt": "2026-09-07T13:59:13.877Z",
+          "networkFeeLovelace": "406630",
+          "siteFeeLovelace": "0",
+          "transactionBytes": 5104,
+          "sequence": 3,
+          "stateLastCheckInAt": "2026-09-07T14:12:55.000Z",
+          "stateReleaseAt": "2026-09-09T14:12:55.000Z",
+          "result": "pass",
+          "notes": "pulse built, signed by an isolated software wallet, submitted, and confirmed on Preprod."
+        },
+        {
+          "action": "pulse",
+          "txId": "466c1bbff3873a82d858349a6b72fd8561d033dcea37f409651e7c2d158d95a9",
+          "submitterAddress": "addr_test1vrng89l206stgr9kfyyk9vg4hgw072plxc94tlgwunla49c5ytat0",
+          "confirmedAt": "2026-09-07T14:00:34.178Z",
+          "networkFeeLovelace": "406630",
+          "siteFeeLovelace": "0",
+          "transactionBytes": 5104,
+          "sequence": 4,
+          "stateLastCheckInAt": "2026-09-07T14:13:14.000Z",
+          "stateReleaseAt": "2026-09-09T14:13:14.000Z",
+          "result": "pass",
+          "notes": "pulse built, signed by an isolated software wallet, submitted, and confirmed on Preprod."
+        },
+        {
+          "action": "pulse",
+          "txId": "34eebf55e0b11ec0ec9804b0fb286b857bd602a44f77e2ae738b502374e4668f",
+          "submitterAddress": "addr_test1vrng89l206stgr9kfyyk9vg4hgw072plxc94tlgwunla49c5ytat0",
+          "confirmedAt": "2026-09-07T14:00:42.016Z",
+          "networkFeeLovelace": "406630",
+          "siteFeeLovelace": "0",
+          "transactionBytes": 5104,
+          "sequence": 5,
+          "stateLastCheckInAt": "2026-09-07T14:14:34.000Z",
+          "stateReleaseAt": "2026-09-09T14:14:34.000Z",
+          "result": "pass",
+          "notes": "pulse built, signed by an isolated software wallet, submitted, and confirmed on Preprod."
+        },
+        {
+          "action": "close",
+          "txId": "7aba10c461f6886568a577fff89fba6e3e9b9b235bdb7856709439d968c7b69b",
+          "submitterAddress": "addr_test1vz87vn6l887n5ddapnpzqwgxhzp07jy0zx9zhwtrwcxvydc8c4g43",
+          "confirmedAt": "2026-09-07T14:01:21.498Z",
+          "networkFeeLovelace": "432800",
+          "siteFeeLovelace": "0",
+          "transactionBytes": 5236,
+          "sequence": 5,
+          "stateLastCheckInAt": "2026-09-07T14:14:34.000Z",
+          "stateReleaseAt": "2026-09-09T14:14:34.000Z",
+          "result": "pass",
+          "notes": "close built, signed by an isolated software wallet, submitted, and confirmed on Preprod."
+        }
+      ],
+      "manifest": {
+        "version": 3,
+        "network": "Preprod",
+        "creationTx": "5ac5cee8ef48845c86fb63b9f349f8ef18adef4175b544a4561e2d4b796d5b80",
+        "seed": {
+          "txHash": "628416245cab53bb58fa23ddb4f31130a1afba802a6d44bcb9f8bbf92c49bcd5",
+          "outputIndex": 1
+        },
+        "receiptName": "BATON",
+        "terminalReceiptName": "BATON_COMPLETE",
+        "recoveryReceiptName": "BATON_RECOVERY",
+        "policyId": "7f3e9c7255c502989195452f721a8c7491da9d8a42aaf4af7a773cb3",
+        "receiptUnit": "7f3e9c7255c502989195452f721a8c7491da9d8a42aaf4af7a773cb34241544f4e",
+        "terminalReceiptUnit": "7f3e9c7255c502989195452f721a8c7491da9d8a42aaf4af7a773cb34241544f4e5f434f4d504c455445",
+        "validatorAddress": "addr_test1wplna8rj2hzs9xy3j4zj7us6336frk5a3fp24a900fmnevcyqvez5",
+        "ownerKeyHash": "8fe64f5f39fd3a35bd0cc2203906b882ff488f118a2bb963760cc237",
+        "livenessKeyHash": "e68397ea7ea0b40cb6490962b115ba1cff283f360b55fd0ee4ffda97",
+        "checkInPeriodMs": 86400000,
+        "missesToRelease": 2,
+        "lastCheckInAtMs": 1788790308000,
+        "releaseAtMs": 1788963108000,
+        "releaseMode": "fixed",
+        "destination": "addr_test1vqkjkxhwhry4kduldkt7ytg8ylleccj2cl04mrsgff2s6kqwp65cj"
+      }
+    }
+  ]
+}

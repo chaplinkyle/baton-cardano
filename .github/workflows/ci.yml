@@ -1,0 +1,59 @@
+name: Contract CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Check out pinned Aiken standard library
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: aiken-lang/stdlib
+          ref: 933c85e121c12f20562aec97a38aca338ae4c29b # v3.1.0
+          path: build/packages/aiken-lang-stdlib
+
+      - name: Check out pinned Aiken property-test library
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: aiken-lang/fuzz
+          ref: 06874926ec70747f3fc4e2b9364ee9e1393441cc # v2.2.0
+          path: build/packages/aiken-lang-fuzz
+
+      - name: Register pinned Aiken package cache
+        run: printf '[[packages]]\nname = "aiken-lang/stdlib"\nversion = "v3.1.0"\nsource = "github"\n\n[[packages]]\nname = "aiken-lang/fuzz"\nversion = "v2.2.0"\nsource = "github"\n' > build/packages/packages.toml
+
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 24
+
+      - name: Install pinned Aiken compiler
+        run: |
+          npm install --global @aiken-lang/aikup
+          aikup install v1.1.23
+          echo "$HOME/.aiken/bin" >> "$GITHUB_PATH"
+          "$HOME/.aiken/bin/aiken" --version
+
+      - name: Run validator and property tests
+        run: aiken check --deny --seed 20260906 --max-success 1000
+
+      - name: Require security mutations to fail
+        run: npm run test:mutations
+
+      - name: Rebuild the blueprint
+        run: aiken build --deny
+
+      - name: Require reproducible compiled output
+        run: git diff --exit-code -- plutus.json
+
+      - name: Verify the frozen release
+        run: npm run release:verify

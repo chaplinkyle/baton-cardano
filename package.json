@@ -1,0 +1,13 @@
+{
+  "name": "baton-cardano",
+  "version": "0.1.0-rc.10",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "aiken build --deny",
+    "test": "aiken check --deny --seed 20260906 --max-success 1000",
+    "test:mutations": "node scripts/run-contract-mutations.mjs",
+    "release:manifest": "node scripts/generate-release-manifest.mjs",
+    "release:verify": "node scripts/verify-release.mjs"
+  }
+}

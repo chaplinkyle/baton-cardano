@@ -1,0 +1,5 @@
+* text=auto eol=lf
+*.png binary
+*.json text eol=lf
+*.ak text eol=lf
+*.toml text eol=lf

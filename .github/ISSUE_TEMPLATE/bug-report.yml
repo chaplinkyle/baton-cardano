@@ -1,0 +1,40 @@
+name: Bug report
+description: Report a reproducible non-sensitive defect
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Do not disclose vulnerabilities here. Use the private security advisory flow described in SECURITY.md.
+  - type: input
+    id: version
+    attributes:
+      label: Release or validator hash
+      placeholder: 0.1.0-rc.10
+    validations:
+      required: true
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Environment
+      options:
+        - Local Aiken tests
+        - Cardano emulator
+        - Cardano Preview
+        - Cardano Preprod
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: What happened?
+      description: Include minimal reproduction steps, expected behavior, and actual behavior.
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety confirmation
+      options:
+        - label: This report contains no private keys, seed phrases, or sensitive exploit details.
+          required: true

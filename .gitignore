@@ -1,0 +1,12 @@
+/build/
+/node_modules/
+*.log
+*.pem
+*.skey
+*.vkey
+*.mnemonic
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
